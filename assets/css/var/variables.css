@@ -1,0 +1,78 @@
+/* // COLOR VARIABLES
+ */
+:root {
+  --color-primary: #0099a3;
+  --color-hero-dark: #1f2029;
+  --color-navbar-dark: #14151a;
+  --color-secondary: #9f4739;
+  --color-background-dark: #0f0921;
+
+  /* --color-secondary: #5572A9; */
+/* primary layers */
+  --color-primary-shade-0: #33558f;
+  --color-primary-shade-1: #2e4b7f;
+  --color-primary-shade-2: #28426f;
+  --color-primary-shade-3: #22385f;
+  --color-primary-shade-4: #1d2f50;
+  --color-primary-shade-5: #0b1320;
+  
+
+  --color-primary-tint-0: #4d6ea9;
+  --color-primary-tint-1: #617eb2;
+  --color-primary-tint-2: #748ebc;
+  --color-primary-tint-3: #889ec5;
+  --color-primary-tint-4: #9cafcf;
+  --color-primary-tint-5: #c4cfe2;
+  /* --color-primary-tint-5: #7958f3; 
+  --color-primary-tint-6: #6d3bef; 
+  --color-primary-tint-7: #6200ea;  */
+
+
+  
+  
+  /* secondary leyers */
+  
+  --color-secondary-shade-1: #7f392e;
+  --color-secondary-shade-2: #6f3228;
+  --color-secondary-shade-3: #5f2b22;
+  --color-secondary-shade-nutural: #5f2b22;
+  --color-secondary-tint-0: #a9594d;
+  --color-secondary-tint-1: #b26c61;
+  --color-secondary-tint-2: #bc7e74;
+  --color-secondary-tint-3: #c59188;
+  
+
+
+}
+
+/*  color:var(--color-primary) !important ; */
+
+
+
+
+.wp-block-latest-posts__post-title {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wp-block-latest-posts__post-title::before {
+  margin-left: auto;
+}
+
+.wp-block-latest-posts__post-title::after, .wp-block-latest-posts__post-title::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  transition: 0.5s;
+}
+
+.wp-block-latest-posts__post-title:hover::after, .wp-block-latest-posts__post-title:hover::before {
+  width: 100%;
+  }

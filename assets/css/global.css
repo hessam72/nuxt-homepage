@@ -1,0 +1,14 @@
+@import "https://a5.behance.net/86f25899b064ae65b1607cf923a25ab721755988/fonts/AcuminPro/acumin-black.woff2";
+
+html{
+    font-family: "acumin-pro-wide", "Acumin Pro Wide", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;
+}
+.pagination-wrapper {
+margin-bottom: 2rem;
+margin-top: -1rem !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
