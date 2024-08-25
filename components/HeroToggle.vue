@@ -9,6 +9,7 @@ const toggleValue = colorMode.value === 'dark' ? ref(true) : ref(false)
 
 watch(toggleValue, is_dark => {
   colorMode.preference = is_dark ? 'dark' : 'light'
+//   toggleValue=is_dark ? 'dark' : 'light'
 
 //   useNuxtApp().$bus.$emit('toggle_home_theme', is_dark)
 })
