@@ -17,7 +17,8 @@ const is_saved = ref(true)
    
     :to="'#'"
   >
-    <div class="card-wrapper bg-white dark:bg-gray-900 ring-1 ring-gray-200 dark:ring-gray-800 rounded-lg shadow-md relative">
+    <div class="card-wrapper bg-slate-50 dark:bg-slate-700 ring-1
+     ring-gray-200 dark:ring-gray-800 rounded-lg shadow-md relative">
       <div
         class="save-icon show_on_hover"
         @click="is_saved = !is_saved"

@@ -1,9 +1,18 @@
 <script setup lang="ts">
 
+const colorMode = useColorMode();
+const theme_value = colorMode.value === "dark" ? ref(true) : ref(false);
+watch(colorMode, (val) => {
+  if (val.value === "light") {
+    theme_value.value = false;
+  } else {
+    theme_value.value = true;
+  }
+});
 </script>
 
 <template>
-  <VApp>
+  <VApp :class="theme_value ? ['dark-background', 'dark'] : 'light-background'">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

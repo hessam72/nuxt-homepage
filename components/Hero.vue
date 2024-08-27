@@ -39,8 +39,7 @@ watch(colorMode, (val) => {
 
 <template>
   <div
-    class="hero-container"
-    :class="[theme_value ? 'dark-background' : 'light-background']"
+    class="hero-container bg-slate-50 dark:bg-slate-950"
   >
     <div v-show="!theme_value">
       <img
@@ -114,7 +113,7 @@ watch(colorMode, (val) => {
       <div>
         <p
           v-if="!theme_value"
-          class="slide-up"
+          class="slide-up text-slate-800"
           :class="[show_animate ? 'animation_up' : '']"
         >
           All The
@@ -146,7 +145,7 @@ watch(colorMode, (val) => {
       <div>
         <p
           v-if="!theme_value"
-          class="slide-up"
+          class="slide-up text-slate-800"
           :class="[show_animate ? 'animation_up' : '']"
         >
           You Need
@@ -170,19 +169,6 @@ watch(colorMode, (val) => {
     <HeroToggle @toggle_hero="toggle" />
   </div>
 </template>
-
-<!--
-  <script lang="ts">
-  export default {
-  mounted() {
-
-  this.$bus.$on("toggle_home_theme", (data) => {
-
-  });
-  },
-  };
-  </script>
--->
 <style lang="scss" scoped>
 .hero-bg {
   max-width: 17%;
@@ -222,7 +208,7 @@ watch(colorMode, (val) => {
   background: #fff;
 }
 .dark-background {
-  background: #383838;
+  background: #191919;
   color: #fff !important;
   p {
     color: #eee !important;

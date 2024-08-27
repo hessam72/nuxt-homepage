@@ -17,7 +17,7 @@ export default {
     <UNotifications />
 
     <Header />
-    <div class="main-container">
+    <div class="main-container  bg-slate-50 dark:bg-slate-950">
       <slot />
     </div>
     <Footer />

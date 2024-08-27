@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { getCurrentInstance, ref, watch } from 'vue'
+import { useTheme } from 'vuetify'
 
+const theme = useTheme()
 const colorMode = useColorMode()
 
-const app = getCurrentInstance()
 
 const toggleValue = colorMode.value === 'dark' ? ref(true) : ref(false)
 
 watch(toggleValue, is_dark => {
   colorMode.preference = is_dark ? 'dark' : 'light'
 //   toggleValue=is_dark ? 'dark' : 'light'
+theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
 
-//   useNuxtApp().$bus.$emit('toggle_home_theme', is_dark)
 })
 
 onMounted(() => {
@@ -20,6 +21,7 @@ onMounted(() => {
 
 
 <template>
+   
   <div class="container">
     <input
       id="checkbox"

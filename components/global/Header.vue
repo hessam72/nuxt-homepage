@@ -1,56 +1,58 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-
-const colorMode = useColorMode()
+const colorMode = useColorMode();
 
 // eslint-disable-next-line camelcase
-const theme_value = colorMode.value === 'dark' ? ref(true) : ref(false)
+const theme_value = colorMode.value === "dark" ? ref(true) : ref(false);
 
 function initNavbar() {
   // TOGGLE HAMBURGER & COLLAPSE NAV
-  $('.nav-toggle').on('click', function () {
-    $(this).toggleClass('open')
-    $('.menu-left').toggleClass('collapse')
-  })
+  $(".nav-toggle").on("click", function () {
+    $(this).toggleClass("open");
+    $(".menu-left").toggleClass("collapse");
+  });
 
   // REMOVE X & COLLAPSE NAV ON ON CLICK
-  $('.menu-left a').on('click', () => {
-    $('.nav-toggle').removeClass('open')
-    $('.menu-left').removeClass('collapse')
-  })
+  $(".menu-left a").on("click", () => {
+    $(".nav-toggle").removeClass("open");
+    $(".menu-left").removeClass("collapse");
+  });
 }
 function initHideNavOnScroll() {
-  let prevScrollpos = window.pageYOffset
+  let prevScrollpos = window.pageYOffset;
   window.onscroll = function () {
-    const currentScrollPos = window.pageYOffset
+    const currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
       // scroll up
-      $('header').removeClass('hide-nav').addClass('show-nav')
-    }
-    else {
+      $("header").removeClass("hide-nav").addClass("show-nav");
+    } else {
       // scroll down
-      $('header').removeClass('show-nav').addClass('hide-nav')
-      $('.nav-toggle').removeClass('open')
-      $('.menu-left').removeClass('collapse')
+      $("header").removeClass("show-nav").addClass("hide-nav");
+      $(".nav-toggle").removeClass("open");
+      $(".menu-left").removeClass("collapse");
     }
-    prevScrollpos = currentScrollPos
-  }
+    prevScrollpos = currentScrollPos;
+  };
 }
 onMounted(() => {
-  initNavbar()
-  initHideNavOnScroll()
-})
+  initNavbar();
+  initHideNavOnScroll();
+});
+watch(colorMode, (val) => {
+  if (val.value === "light") {
+    theme_value.value = false;
+  } else {
+    theme_value.value = true;
+  }
+});
 </script>
 
 <template>
   <header :class="theme_value ? 'dark-background' : 'light-background'">
     <div class="container">
       <nav id="navigation">
-        <a
-          href="/"
-          class="logo"
-        >
+        <a href="/" class="logo">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="logo_svg"
@@ -61,41 +63,29 @@ onMounted(() => {
             clip-rule="evenodd"
             viewBox="0 0 640 640"
           >
-            <path d="M319.988 7.973C143.293 7.973 0 151.242 0 327.96c0 141.392 91.678 261.298 218.826 303.63 16.004 2.964 21.886-6.957 21.886-15.414 0-7.63-.319-32.835-.449-59.552-89.032 19.359-107.8-37.772-107.8-37.772-14.552-36.993-35.529-46.831-35.529-46.831-29.032-19.879 2.209-19.442 2.209-19.442 32.126 2.245 49.04 32.954 49.04 32.954 28.56 48.922 74.883 34.76 93.131 26.598 2.882-20.681 11.15-34.807 20.315-42.803-71.08-8.067-145.797-35.516-145.797-158.14 0-34.926 12.52-63.485 32.965-85.88-3.33-8.078-14.291-40.606 3.083-84.674 0 0 26.87-8.61 88.029 32.8 25.512-7.075 52.878-10.642 80.056-10.76 27.2.118 54.614 3.673 80.162 10.76 61.076-41.386 87.922-32.8 87.922-32.8 17.398 44.08 6.485 76.631 3.154 84.675 20.516 22.394 32.93 50.953 32.93 85.879 0 122.907-74.883 149.93-146.117 157.856 11.481 9.921 21.733 29.398 21.733 59.233 0 42.792-.366 77.28-.366 87.804 0 8.516 5.764 18.473 21.992 15.354 127.076-42.354 218.637-162.274 218.637-303.582 0-176.695-143.269-319.988-320-319.988l-.023.107z" />
+            <path
+              d="M319.988 7.973C143.293 7.973 0 151.242 0 327.96c0 141.392 91.678 261.298 218.826 303.63 16.004 2.964 21.886-6.957 21.886-15.414 0-7.63-.319-32.835-.449-59.552-89.032 19.359-107.8-37.772-107.8-37.772-14.552-36.993-35.529-46.831-35.529-46.831-29.032-19.879 2.209-19.442 2.209-19.442 32.126 2.245 49.04 32.954 49.04 32.954 28.56 48.922 74.883 34.76 93.131 26.598 2.882-20.681 11.15-34.807 20.315-42.803-71.08-8.067-145.797-35.516-145.797-158.14 0-34.926 12.52-63.485 32.965-85.88-3.33-8.078-14.291-40.606 3.083-84.674 0 0 26.87-8.61 88.029 32.8 25.512-7.075 52.878-10.642 80.056-10.76 27.2.118 54.614 3.673 80.162 10.76 61.076-41.386 87.922-32.8 87.922-32.8 17.398 44.08 6.485 76.631 3.154 84.675 20.516 22.394 32.93 50.953 32.93 85.879 0 122.907-74.883 149.93-146.117 157.856 11.481 9.921 21.733 29.398 21.733 59.233 0 42.792-.366 77.28-.366 87.804 0 8.516 5.764 18.473 21.992 15.354 127.076-42.354 218.637-162.274 218.637-303.582 0-176.695-143.269-319.988-320-319.988l-.023.107z"
+            />
           </svg>
-          <p>Architect Store</p></a>
-        <div
-          aria-label="mobile menu"
-          class="nav-toggle"
+          <p>Architect Site</p></a
         >
+        <div aria-label="mobile menu" class="nav-toggle">
           <span />
           <span />
           <span />
         </div>
         <ul class="menu-left">
           <li>
-            <a
-              class="menu_item"
-              href="#"
-            >Blog</a>
+            <a class="menu_item" href="#">Page1</a>
           </li>
           <li>
-            <NuxtLink
-              class="menu_item"
-              to="/products"
-            >
-              Our Products
-            </NuxtLink>
+            <NuxtLink class="menu_item" to="#"> Page2 </NuxtLink>
           </li>
 
           <li>
-            <NuxtLink
-              class="menu_item"
-              to="/user/DesignOrder/create"
-            >
-              Request A Design
-            </NuxtLink>
-          </li><li>
+            <NuxtLink class="menu_item" to="#"> Page3 </NuxtLink>
+          </li>
+          <li>
             <RouterLink
               class="login-btn flex items-center align-center"
               to="#authurl"
@@ -113,10 +103,12 @@ onMounted(() => {
                 xml:space="preserve"
               >
                 <g>
-                  <path d="M42.078,64.589H3.118C1.396,64.589,0,63.179,0,61.439s1.396-3.149,3.118-3.149h38.958L29.405,43.778 c-1.137-1.298-1.017-3.281,0.268-4.429c1.285-1.148,3.248-1.027,4.385,0.271l17.238,19.742c1.059,1.208,1.027,3.009-0.02,4.179 L34.057,83.26c-1.137,1.298-3.1,1.419-4.385,0.271c-1.284-1.148-1.404-3.132-0.268-4.43L42.078,64.589L42.078,64.589z M47.434,122.786c-1.77,0.428-3.55-0.659-3.978-2.428s0.659-3.55,2.427-3.978c4.258-1.032,7.932-1.761,11.303-2.428 c15.99-3.168,24.566-4.866,24.566-27.147V34.258c0-20.817-9.068-22.512-24.086-25.318c-3.596-0.672-7.498-1.401-11.783-2.441 c-1.768-0.428-2.855-2.208-2.427-3.978c0.428-1.769,2.208-2.855,3.978-2.428c4.02,0.976,7.885,1.698,11.447,2.363 c18.383,3.436,29.482,5.51,29.482,31.801v52.548c0,27.705-10.443,29.773-29.912,33.63 C54.986,121.121,51.215,121.869,47.434,122.786L47.434,122.786z" />
+                  <path
+                    d="M42.078,64.589H3.118C1.396,64.589,0,63.179,0,61.439s1.396-3.149,3.118-3.149h38.958L29.405,43.778 c-1.137-1.298-1.017-3.281,0.268-4.429c1.285-1.148,3.248-1.027,4.385,0.271l17.238,19.742c1.059,1.208,1.027,3.009-0.02,4.179 L34.057,83.26c-1.137,1.298-3.1,1.419-4.385,0.271c-1.284-1.148-1.404-3.132-0.268-4.43L42.078,64.589L42.078,64.589z M47.434,122.786c-1.77,0.428-3.55-0.659-3.978-2.428s0.659-3.55,2.427-3.978c4.258-1.032,7.932-1.761,11.303-2.428 c15.99-3.168,24.566-4.866,24.566-27.147V34.258c0-20.817-9.068-22.512-24.086-25.318c-3.596-0.672-7.498-1.401-11.783-2.441 c-1.768-0.428-2.855-2.208-2.427-3.978c0.428-1.769,2.208-2.855,3.978-2.428c4.02,0.976,7.885,1.698,11.447,2.363 c18.383,3.436,29.482,5.51,29.482,31.801v52.548c0,27.705-10.443,29.773-29.912,33.63 C54.986,121.121,51.215,121.869,47.434,122.786L47.434,122.786z"
+                  />
                 </g>
               </svg>
-             
+
               <p>SingIn</p>
             </RouterLink>
           </li>
@@ -127,7 +119,7 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 .light-background {
   background: #f6f6f6;
 }
@@ -162,8 +154,8 @@ section h1 {
   padding: 1rem 15px 0px 15px;
   position: relative;
 }
-.panel-icon{
-color: #555;
+.panel-icon {
+  color: #555;
 }
 @media (min-width: 0) {
   .container {
@@ -172,7 +164,7 @@ color: #555;
     margin-right: auto;
   }
   .container:after {
-    content: ' ';
+    content: " ";
     display: block;
     clear: both;
   }
@@ -184,7 +176,7 @@ color: #555;
     margin-right: auto;
   }
   .container:after {
-    content: ' ';
+    content: " ";
     display: block;
     clear: both;
   }
@@ -196,7 +188,7 @@ color: #555;
     margin-right: auto;
   }
   .container:after {
-    content: ' ';
+    content: " ";
     display: block;
     clear: both;
   }
@@ -208,7 +200,7 @@ color: #555;
     margin-right: auto;
   }
   .container:after {
-    content: ' ';
+    content: " ";
     display: block;
     clear: both;
   }
@@ -220,7 +212,7 @@ color: #555;
     margin-right: auto;
   }
   .container:after {
-    content: ' ';
+    content: " ";
     display: block;
     clear: both;
   }
@@ -242,7 +234,7 @@ color: #555;
   transition: color 0.35s ease;
 }
 .menu-left .menu_item:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   left: 0;
@@ -252,7 +244,7 @@ color: #555;
   transition: width 0s ease, background 0.35s ease;
 }
 .menu-left .menu_item:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   right: 0;
@@ -319,7 +311,7 @@ color: #555;
 }
 
 .login-btn::before {
-  content: '';
+  content: "";
   width: 0;
   height: 3em;
   border-radius: 30em;
@@ -339,7 +331,7 @@ color: #555;
   .login-icon {
     fill: #fff;
   }
-  .panel-icon{
+  .panel-icon {
     color: #fff;
   }
 }
@@ -357,10 +349,12 @@ header {
   background: rgba(255, 255, 255, 0.92);
   // z-index: 3;
   will-change: transform;
-  transition: background 0.3s, -webkit-transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1);
-  transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1), background 0.3s;
-  transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1), background 0.3s,
+  transition: background 0.3s,
     -webkit-transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1);
+  transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1),
+    background 0.3s;
+  transition: transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1),
+    background 0.3s, -webkit-transform 0.5s cubic-bezier(0.694, 0.048, 0.335, 1);
   transform: translateY(0);
   -webkit-transform: translateY(0);
 }
@@ -384,12 +378,12 @@ header nav .logo {
   .logo_svg {
     width: 2.7rem;
   }
-  p{
+  p {
     margin: 0;
   }
 }
 header nav .logo:after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -453,7 +447,7 @@ ul.menu-left {
   }
 }
 ul.menu-left:before {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }

@@ -1,10 +1,25 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+
+const colorMode = useColorMode();
+const theme_value = colorMode.value == "dark" ? ref(true) : ref(false);
+watch(colorMode, (val) => {
+   if(val.value === "light"){
+    theme_value.value =false
+   }else{
+    theme_value.value =true
+
+   }
+  
+});
+
+
+</script>
 
 <template>
-  <div class="footer-wrapper">
-    <div class="footer-banner bg-white dark:bg-black d-flex align-center	 justify-between">
+  <div class="footer-wrapper" >
+    <div class="footer-banner  d-flex align-center justify-between">
       <div class="left-side d-flex flex-column ga-8">
-        <h2>Have Any Project in Mind ?</h2>
+        <h2 class="pink-darken-2">Have Any Project in Mind ?</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Incidunt unde maiores atque delectus aute.
@@ -14,7 +29,7 @@
         Hire Us
       </button>
     </div>
-    <div class="main-section-footer bg-gray-50 dark:bg-gray-950 w-full flex justify-between align-center	">
+    <div class="main-section-footer bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-50 w-full flex justify-between align-center	">
       <div class="f-section company-info d-flex flex-column ga-3">
         <h2>Architect Store</h2>
         <p class="text-gray-500 dark:text-gray-300">
